@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <title>{{POLICY_TITLE}}</title>
+    <style>
+        .row{
+            width:920px;
+            font-size: 15px;
+            margin-left: 50px;
+
+        }
+
+         .main{
+            width:920px;
+            font-size: 17px;
+            margin-left: 50px;
+            color: #2e2e2e
+
+         }
+
+         .date{
+            width:920px;
+            font-size: 7px;
+            margin-left: 50px;
+            color: #737373
+
+         }
+
+        .picture{
+            width:300px;
+            height:300px;
+            background-repeat: no-repeat;
+            background-image: url("https://dm-bmj.oss-cn-guangzhou.aliyuncs.com/static/pc/img/Scientific.e9d9387.png");
+            margin-right: 50px;
+            }
+
+        .table{
+            width:62%;
+            height:100px;
+            margin-left: 50px;
+            font-size: 17px;
+
+        }
+        .image{
+            margin-right: 100px;
+        }
+        .box{
+            width:1100px;
+            height:300px;
+            background-repeat: no-repeat;
+            background-image: url("https://img03.scbao.com/200917/1082167-20091F2393310.jpg") ;
+        }
+</style>
+</head>
+
+
+<body>
+
+    <div  class="box">
+    </div>
+
+    <div class="row">
+        <div style="word-break">
+            <h1>{{POLICY_TITLE}}</h1>
+        </div></div>
+
+    <div class="date">
+        <div style="word-break">
+            <h1>日期:{{PUB_TIME}} &nbsp&nbsp&nbsp&nbsp 来源:{{POLICY_SOURCE}}</h1>
+        </div></div>
+    <img class="image" style='float:right'src="https://dm-bmj.oss-cn-guangzhou.aliyuncs.com/static/pc/img/Scientific.e9d9387.png" width="400"height="400"> <br>
+    <div class="main">
+    <div class="col-md-6" style="text-indent:2em;>"> <h4>{{POLICY_BODY}}</h4></div></div>
+
+
+
+
+<table class= "table"  border="" width="800" height="200" cellspacing="0" cellpadding="0">
+<tr>
+  <td>POLICY_ID</td>
+  <td>{{POLICY_ID}}</td>
+  <td>POLICY_GRADE</td>
+  <td>{{POLICY_GRADE}}</td>
+</tr>
+<tr>
+  <td>PUB_AGENCY_ID</td>
+  <td>{{PUB_AGENCY_ID}}</td>
+  <td>PUB_AGENCY</td>
+  <td>{{PUB_AGENCY}}</td>
+</tr>
+    <tr>
+        <td>PUB_AGENCY_FULLNAME</td>
+        <td>{{PUB_AGENCY_FULLNAME}}</td>
+        <td>PUB_NUMBER</td>
+        <td>{{PUB_NUMBER}}</td>
+    </tr>
+    <tr>
+        <td>PUB_TIME</td>
+        <td>{{PUB_TIME}}</td>
+        <td>POLICY_TYPE</td>
+        <td>{{POLICY_TYPE}}</td>
+    </tr>
+</table>
+
+
+</body>
+</html>

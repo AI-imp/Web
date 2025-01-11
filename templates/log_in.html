@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer"/>
+    <title>登录</title>
+    <style>
+    /* 先给整个页面设置背景颜色还有字体 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sana-fserif;
+            background: #34495e;
+        }
+                /* 给整个表单设置宽度高度是根据表单中的内容自行收缩的，
+        并设置定位让整个表单居于页面正中间 */
+        .box{
+            width: 600px;
+            padding: 40px;
+            position: absolute;   /* 绝对定位，相对于父标签来进行定位 */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background: #191919;
+            text-align: center;  /*表单中内容居中*/
+        }
+        /* 设置标题样式 */
+        .box h1{
+            color: white;    /* 设置字体颜色 */
+            text-transform: uppercase;  /* 将字体全部设置成大写字母  */
+            font-size: 100px;
+            font-weight: 700;  /*  设置字体粗细   */
+        }
+                /* 设置用户名输入框和密码输入框样式 */
+        .box input[type="text"],.box input[type="password"]{
+          border-radius: 24px;
+          border: 2px solid #3498db;
+          background: none;
+          display: block;
+          margin: 20px auto;
+          text-align: center;
+          padding: 14px 10px;
+          width: 250px;
+          outline: none;
+          color: white;     /* 设置输入框中竖线的颜色 */
+          transition: 0.25s;   /* 设置元素过渡效果 */
+        }
+                /* 设置文本框获得焦点时的样式 */
+        .box input[type="text"]:focus,.box input[type="password"]:focus{
+            width: 300px;
+            border-color: #2ecc71;
+        }
+                /* 设置提交按钮的样式 */
+        .box input[type="submit"]{
+          border-radius: 24px;
+          border: 2px solid #2ecc71;
+          background: none;
+          display: block;
+          margin: 20px auto;
+          text-align: center;
+          padding: 14px 40px;
+          outline: none;
+          color: white;     /* 设置输入框中竖线的颜色 */
+          transition: 0.25s;
+          cursor: pointer;    /* 设置光标的样式 */
+        }
+         /* 设置鼠标移人到按钮上的样式 */
+        .box input[type="submit"]:hover{
+            background: #2ecc71;
+        }
+        .msg {
+            text-align: center;
+            color: white;
+
+        }
+
+
+    </style>
+</head>
+    <body>
+
+        <form class="box" action="#" method="post" name="e">
+            <h1>L o g i n</h1>
+        <div><input type="text" name="username" placeholder="username" id="username"  class="input-item" onchange="Name()">
+               <div id="name" class="red" style="color: red;"></div></div>
+        <div><input type="password"  name="password" placeholder="password" id="password"  class="input-item" onchange="checkPwd()"></div>
+               <div id="passwordId" class="red" style="color: red;" ></div>
+        <input id="ip_city" name="ip_city" style="display: none" type="text">
+        <input id="ip_pro" name="ip_pro" style="display: none" type="text">
+               <input type="submit" value="登录"  id="btn"  onclick="recheck()" class='btn'>
+
+        </table><font color="red"> <div class="div" align="center" >{{msg}}</div></font>
+        <div class="msg">
+               还未注册？
+               <a href="http://127.0.0.1:8000/sign_in">注册</a>
+        </div>
+</form>
+</body>
+
+</html>
+
+<script type="text/javascript">
+function checkPwd(){
+	var password=document.getElementById("password").value;
+	var reg=/^[a-zA-Z0-9]{6,12}$/;
+	var reg1=/^\d{6,12}$/;
+	if (!reg.test(password)){
+		document.getElementById("passwordId").innerHTML="";
+		return false;}
+	if (reg1.test(password)){
+		document.getElementById("passwordId").innerHTML="";
+		return false;}
+	document.getElementById("passwordId").innerHTML=" ";
+	return true;}
+
+function Name(){
+	var username=document.getElementById("username").value;
+	var reg=/^[\u4e00-\u9fa5]{0,}$/;
+	if (!reg.test(username)){
+		document.getElementById("name").innerHTML="用户名格式有误";
+		return false;}
+	document.getElementById("name").innerHTML=" ";
+	return true;}
+
+function recheck(){
+        if (!Name()||!checkPwd()){
+	        alert("请将登录信息填写完整!");}
+	    if (Name()&checkPwd()){
+	        }
+}
+
+
+    </script>
+
+<!--whois start-->
+<script type="text/javascript">
+    var pro = "";
+    var city = "";
+    function smldhz(obj){
+        pro = obj.pro;
+        city = obj.city;
+        document.getElementById("ip_city").value=city;
+        document.getElementById("ip_pro").value =pro;
+
+    }
+
+
+</script>
+
+<!--要放于最底部-->
+<script src="https://whois.pconline.com.cn/ipJson.jsp?callback=smldhz"></script>
+<!--whois end-->
+
+
+

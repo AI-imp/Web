@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册账户</title>
+    <link rel="stylesheet" href="css/regist.css">
+    <link rel="shortcut icon" href="images/camera.ico">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+
+        }
+
+        #reg_header{
+            /*一条横杠*/
+            height: 110px;
+            width: 100%;
+            box-shadow: 0px 0px 10px #314559;
+        }
+
+        #reg_header .reg_h_center{
+            width: 1200px;
+            height: 110px;
+            margin: 0 auto;
+            display: flex;
+
+        }
+        #reg_header .reg_h_left{
+             height: 110px;
+             flex: 1;
+
+         }
+
+
+        #reg_header .reg_h_left h3{
+            /*欢迎注册*/
+            float: left;
+            margin-top: 40px;
+            margin-left: 10px;
+            font-size: 50px;
+            color: #3c546d;
+            text-shadow: grey 0.1em 0.1em 0.2em
+        }
+        #reg_header .reg_h_right{
+            height: 110px;
+            flex: 1;
+            padding-top: 50px;
+            padding-left: 30px;
+        }
+
+
+        .reg_back {
+            /*设置框里的尺寸、背景色、边距等*/
+            width: 850px;
+            height: 450px;
+            border: 8px solid  #4e6e8d;
+            background: #688aac;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        .reg_left {
+            /*设置左浮动和外边距*/
+            float: left;
+            margin: 10px;
+        }
+
+        .reg_left > p:first-child {
+            /*设置段落（新用户注册）颜色和字体大小*/
+            color: #3d3d3d;
+            font-size: 20px;
+        }
+
+        .reg_left > p:last-child {
+            /*设置段落（USER REGISTER）颜色和字体大小*/
+            color: #4d4d4d;
+            font-size: 20px;
+        }
+
+        .reg_center {
+            /*设置中间的各种输入框等*/
+            float: left;
+            width: 450px;
+        }
+
+        .reg_right {
+            /*设置右边段落浮动和外间距*/
+            float: right;
+            margin: 30px;
+        }
+
+        .reg_right > p:first-child {
+            font-size: 15px;
+        }
+
+        .reg_right p a {
+            /*设置超链接（立即登录）颜色*/
+            color: crimson;
+        }
+
+        .td_left {
+            /*设置表单中字体对齐方式和宽度、高度*/
+            width: 100px;
+            text-align: right;
+            height: 40px;
+        }
+
+        .td_right {
+            /*设置输入框内边距*/
+            padding-left: 40px;
+        }
+
+        #username ,#password,#Email, #repassword ,#Telphone,#address{
+            /*设置输入框大小和边框*/
+            width: 200px;
+            height: 30px;
+            border: 1px solid #A4A4A4;
+            /* 设置边框为圆角 */
+            border-radius: 8px;
+            padding-left: 10px;
+        }
+
+        #btn_sub{
+            /*注册按钮*/
+            margin-left: 130px;
+            margin-top: 7px;
+            background: #1c4960;
+            color: #f4f2d2;
+            width: 150px;
+            height: 40px;
+            border: 1px solid gray ;
+            font-size: 23px;
+        }
+
+
+        ::-webkit-input-placeholder {
+            color: #a1a1a1;
+            font-size: 15px;
+            font-weight: bolder;
+        }
+
+    </style>
+
+
+</head>
+<body>
+<!--头部-->
+<div id="reg_header">
+    <div class="reg_h_center">
+        <div class="reg_h_left">
+            <h3>欢迎注册</h3>
+        </div>
+    </div>
+</div>
+
+
+<!--表单内容-->
+<div class="reg_back">
+    <div class="reg_left">
+        <p>新用户注册</p>
+        <p>USER  REGISTER</p>
+    </div>
+    <div class="reg_center">
+        <div class="reg_form">
+            <form action="#" method="post" name="f">
+                <table>
+                    <div class="div"> 用 户 名 称：<input id="username" type="text" class="inputs" name="username" onchange="Name()" placeholder="请输入您的用户名"  />
+                                     <div id="name" class="red" style="color: red;"></div></div>
+
+                    <div class="div"> 输 入 密 码：<input id="password" type="password"  class="inputs" name="password" onchange="checkPwd()" placeholder="请输入密码(字母+数字)"/>
+                                      <div id="passwordId" class="red" style="color: red;"></div></div>
+
+                    <div class="div">确 认 密 码：<input id="repassword" type="password"  class="inputs" onchange="checkRepwd()" placeholder="再次输入密码"/>
+                                      <div id="repasswordId" class="red" style="color: red;"></div></div>
+
+                    <div class="div">电 子 邮 箱：<input id="Email" type="text"  class="inputs" onchange="checkEmail()" name="Email" placeholder="请输入邮箱"/>
+                                      <div id="emailId" class="red" style="color: red;"></div></div>
+
+                    <div class="div">手 机 号 码：<input id="Telphone" type="text"  class="inputs" onchange="checkTelphone()" name="telphone" placeholder="请输入号码"/>
+                                      <div id="TelphoneId" class="red" style="color: red;"></div></div>
+
+                    <div>
+                              <span>常 住 地 址：</span>
+
+		                      <select id="prov"  name="prov" onClick="getprov()" >
+		                      <option selected>请选择所在省份</option>
+		                      </select>
+
+                              <select id="city" name="city" onclick="getcity()" >
+                                  <option selected>请选择所在城市</option>
+		                     </select>
+                    </div>
+
+                    <div class="div">性 别 ：<input id="male" name="sex" type="radio" value="男" />男 <input id="female" name="sex" type="radio" value="女"/>女</div>
+
+                     <div class="div">兴趣选择 ：<input name="interest" type="checkbox" value="国家级" />国家级 <input name="interest" type="checkbox" value="省级"/>省级
+                        <input name="interest" type="checkbox" value="区县级" />区县级
+                        <input name="interest" type="checkbox" value="政治" />政治
+                        <input name="interest" type="checkbox" value="经济" />经济
+                        <input name="interest" type="checkbox" value="文卫" />文卫
+                        <input name="interest" type="checkbox" value="教育" />教育
+                        <input name="interest" type="checkbox" value="社会" />社会</div>
+                    <tr>
+                        <td colspan="2" align="center"><input type="submit" value="注  册"  id="btn_sub"  onclick="check()"></td>
+                    </tr>
+                </table><font color="red"> <div class="div" align="center" >{{msg}}</div></font>
+
+            </form>
+        </div>
+    </div>
+    <div class="reg_right">
+        <p>已有账号?<a href="http://127.0.0.1:8000/log_in">立即登录</a></p>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+
+ function checksex() {
+        if (!document.getElementById("male").checked && !document.getElementById("female").checked) {
+            return false;
+        }
+        return true;
+    }
+function Name(){
+	var username=document.getElementById("username").value;
+	var reg=/^[\u4e00-\u9fa5]{0,}$/;
+	if (!reg.test(username)){
+		document.getElementById("name").innerHTML="";
+		return false;}
+	document.getElementById("name").innerHTML=" ";
+	return true;}
+
+function checkPwd(){
+	var password=document.getElementById("password").value;
+	var reg=/^[a-zA-Z0-9]{6,12}$/;
+	var reg1=/^\d{6,12}$/;
+	if (!reg.test(password)){
+		document.getElementById("passwordId").innerHTML="密码长度为6-12个字符";
+		return false;}
+	if (reg1.test(password)){
+		document.getElementById("passwordId").innerHTML="密码设置太简单";
+		return false;}
+	document.getElementById("passwordId").innerHTML=" ";
+	return true;}
+
+function checkRepwd(){
+	var repassword=document.getElementById("repassword").value;
+	var password=document.getElementById("password").value;
+	if (password!=repassword){
+		document.getElementById("repasswordId").innerHTML="两次输入的密码不一致";
+		return false;}
+	document.getElementById("repasswordId").innerHTML=" ";
+	return true;}
+function checkEmail(){
+	var Email=document.getElementById("Email").value;
+	var reg=/^\w+@\w+(\.[a-zA-Z]{2,3}){1,2}$/;
+	if (!reg.test(Email)){
+		document.getElementById("emailId").innerHTML="Email格式不正确,例如123@qq.com";
+		return false;}
+	document.getElementById("emailId").innerHTML=" ";
+	return true;}
+
+function checkTelphone(){
+    var Telphone = document.getElementById("Telphone").value;
+    var reg_telphone = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+    var flag = reg_telphone.test(Telphone);
+    if(!flag){
+         document.getElementById("TelphoneId").innerHTML="手机号输入有误";
+         return false;}
+	document.getElementById("TelphoneId").innerHTML=" ";
+	return true;}
+
+var provs=new Array('北京','深圳','上海','重庆','天津','广东','河北','山西','内蒙古','辽宁','吉林','黑龙江','江苏','浙江','安徽','福建','江西','山东','河南','湖北','广西','海南','四川','贵州','云南','西藏','陕西','甘肃','青海','宁夏','新疆','香港','澳门','台湾')
+cities = new Object();
+cities['河北']=new Array('石家庄', '张家口市', '承德市', '秦皇岛市', '唐山市', '廊坊市', '保定市', '沧州市', '衡水市', '邢台市', '邯郸市');
+cities['山西']=new Array('太原市', '大同市', '朔州市', '阳泉市', '长治市', '晋城市', '忻州地区', '吕梁地区', '晋中市', '临汾地区', '运城地区');
+cities['北京']=new Array('东城区','西城区','崇文区','宣武区','朝阳区','海淀区','丰台区','石景山');
+cities['深圳']=new Array('罗湖','福田','南山','盐田','宝安','龙岗');
+cities['上海']=new Array('宝山','金山','南市','长宁','静安','青浦','崇明','卢湾','松江','奉贤','浦东','杨浦','虹口','普陀','闸北','黄浦','闵行','徐汇','嘉定','南汇');
+cities['天津']=new Array('天津市区','天津市辖区');
+cities['重庆']=new Array('重庆市区','重庆市辖区');
+cities['辽宁']=new Array('沈阳市','大连市','鞍山市','抚顺市','本溪市','丹东市','锦州市','营口市','阜新市','辽阳市','盘锦市','铁岭市','朝阳市','葫芦岛市');
+cities['吉林']=new Array('长春市','吉林市','四平市','辽源市','通化市','白山市','松原市','白城市','延边州','长白山管委会');
+cities['黑龙江']=new Array('哈尔滨市','齐齐哈尔市','大庆市','佳木斯市','牡丹江市','七台河市','双鸭山市','黑河市','鸡西市','伊春市','绥化市','鹤岗市','加格达奇市');
+cities['江苏']=new Array('南京市','苏州市','无锡市','常州市','南通市','扬州市','镇江市','泰州市','盐城市','连云港市','宿迁市','淮安市','徐州市');
+cities['浙江']=new Array('杭州市','宁波市','温州市','嘉兴市','湖州市','绍兴市','金华市','衢州市','舟山市','台州市','丽水市');
+cities['安徽']=new Array('合肥市','芜湖市','蚌埠市','淮南市','马鞍山市','淮北市','铜陵市','安庆市','黄山市','滁州市','阜阳市','宿州市','巢湖市','六安市','亳州市','池州市','宣城市');
+cities['福建']=new Array('福州市','厦门市','莆田市','三明市','泉州市','漳州市','南平市','龙岩市','宁德市');
+cities['江西']=new Array('南昌市','景德镇市','萍乡市','九江市','新余市','鹰潭市','赣州市','吉安市','宜春市','抚州市','上饶市');
+cities['山东']=new Array('济南市','青岛市','淄博市','枣庄市','东营市','烟台市','潍坊市','济宁市','泰安市','威海市','日照市','莱芜市','临沂市','德州市','聊城市','滨州市','菏泽市');
+cities['河南']=new Array('郑州市','开封市','洛阳市','平顶山市','安阳市','鹤壁市','新乡市','焦作市','濮阳市','许昌市','漯河市','三门峡市','南阳市','商丘市','信阳市','周口市','驻马店市');
+cities['湖北']=new Array('武汉市','黄石市','十堰市','荆州市','宜昌市','襄樊市','鄂州市','荆门市','孝感市','黄冈市','咸宁市','随州市');
+cities['湖南']=new Array('长沙市','株洲市','湘潭市','衡阳市','邵阳市','岳阳市','常德市','张家界市','益阳市','郴州市','永州市','怀化市','娄底市');
+cities['广东']=new Array('广州市','深圳市','珠海市','汕头市','韶关市','佛山市','江门市','湛江市','茂名市','肇庆市','惠州市','梅州市','汕尾市','河源市','阳江市','清远市','东莞市','中山市','潮州市','揭阳市','云浮市');
+cities['海南']=new Array('文昌市','琼海市','万宁市','五指山市','东方市','儋州市');
+cities['四川 ']=new Array('成都市','自贡市','攀枝花市','泸州市','德阳市','绵阳市','广元市','遂宁市','内江市','乐山市','南充市','眉山市','宜宾市','广安市','达州市','雅安市','巴中市','资阳市');
+cities['贵州']=new Array('贵阳市','六盘水市','遵义市','安顺市');
+cities['云南']=new Array('昆明市','曲靖市','玉溪市','保山市','昭通市','丽江市','普洱市','临沧市');
+cities['陕西']=new Array('西安市','铜川市','宝鸡市','咸阳市','渭南市','延安市','汉中市','榆林市','安康市','商洛市');
+cities['甘肃']=new Array('兰州市','金昌市','白银市','天水市','嘉峪关市','武威市','张掖市','平凉市','酒泉市','庆阳市','定西市','陇南市');
+cities['青海']=new Array('西宁市');
+cities['台湾'] = new Array('台北市','高雄市','基隆市','台中市','台南市','新竹市','嘉义市');
+cities['广西']=new Array('南宁市','柳州市','桂林市','梧州市','北海市','防城港市','钦州市','贵港市','玉林市','百色市','贺州市','河池市','来宾市','崇左市');
+cities['内蒙古']=new Array('呼和浩特市','包头市','乌海市','赤峰市','通辽市','鄂尔多斯市','呼伦贝尔市','巴彦淖尔市','乌兰察布市');
+cities['西藏']=new Array('拉萨市');
+cities['宁夏']=new Array('银川市','石嘴山市','吴忠市','固原市','中卫市');
+cities['新疆']=new Array('乌鲁木齐市','克拉玛依市');
+cities['香港']=new Array('台北市','高雄市','基隆市','台中市','台南市','新竹市','嘉义市');
+
+function getprov()
+		{   var select=document.getElementById("city");
+		    select.options.length=1;
+			var select=document.getElementById("prov");
+			for(var i=0;i<provs.length;i++)
+			{
+			var opt=document.createElement("option");
+			opt.value=provs[i];
+			opt.textContent=provs[i];
+			select.appendChild(opt);
+			}
+			select.length=provs.length+1;
+		};
+function getcity()
+		{   var select=document.getElementById("city");
+			var pv=document.getElementById("prov").value;
+			for(var i=0;i<cities[pv].length;i++)
+			{
+			var opt=document.createElement("option");
+			opt.value=cities[pv][i];
+			opt.textContent=cities[pv][i];
+			select.appendChild(opt);
+			}
+			select.length=cities[pv].length+1;
+		};
+
+
+
+function check(){
+        if (!Name()||!checkPwd()||!checkRepwd()||!checkEmail()||!checkTelphone()||!checksex()){
+	        alert("请将注册信息填写完整!");}
+}
+
+
+</script>
+
+
+

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{% block title %}Search{% endblock %}</title>
+  <meta name="description" content="政策搜索引擎。" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="" />
+  <meta name="founder" content="" />
+  <link href="https://cdn.bootcss.com" rel="dns-prefetch" />
+  <link href="https://api.bootcdn.cn" rel="dns-prefetch" />
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <style>
+    .table_style{ width:100px; height:100px; text-align: center;}
+    .table_style_TITLE{ width:400px; height:100px; text-align: center;}
+    .log{
+        color:  #FFFFFF;
+        text-decoration:none;
+        log:hover { color: #F00; text-decoration: underline; }
+    }
+
+  </style>
+  <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <!--[if IE 9]>
+    <script src="https://cdn.bootcss.com/geopattern/1.2.3/js/base64.min.js"></script>
+    <script src="https://cdn.bootcss.com/geopattern/1.2.3/js/typedarray.min.js"></script>
+  <![endif]-->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png?1526622111831" />
+  <link rel="shortcut icon" href="/assets/ico/favicon.ico?1526622111831" />
+<!--   <script>var build = 1526622111831;</script>
+  <script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?24aff315392dc2c9b2805cfa4d8e101a";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();</script> -->
+ </head>
+ <body class="home-template">
+ <header class="site-header" style="background: #795548">
+ {% block msg %}
+ <a class="log" style="font-size:25px; " href="http://127.0.0.1:8000/log_in"  target="_blank" shape="rect"> {{msg}}</a>
+ {% endblock %}
+
+   <nav class="navbar navbar-static-top main-navbar" id="top">
+    <div class="container">
+     <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+      <a href="/" class="navbar-brand brand-bootcdn text-hide" onclick="_hmt.push(['_trackEvent', 'main-navbar', 'click', 'main-navbar-bootcdn'])">BootCDN</a>
+     </div>
+     <nav id="bs-navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+      </ul>
+     </nav>
+    </div>
+   </nav>
+   <div class="container jumbotron" style="background: #795548">
+    <div class="row">
+     <div class="col-xs-12">
+      <h1 style="color: #FFFFFF; text-align: center; text-shadow: black 0.1em 0.1em 0.2em;">Searcher</h1>
+      <p style="text-align: center; color: #FFFFFF;">稳定、快速、免费的政策搜索服务<br />
+        <span class="package-amount" style="text-align: center; color: #FFFFFF;">共收录了 <strong>15w</strong> 条政策</span>
+      </p>
+      <div class="search-wraper" role="search">
+        <form action="search" method="GET">
+          <input class="form-control search clearable" placeholder="搜索关键词，例如：浙江" autocomplete="off" autofocus="" tabindex="0" autocorrect="off" autocapitalize="off" spellcheck="false" style="width: 100%;" id="keyw" name="q" value="{% block search %}{% endblock %}"/>
+
+
+   <!--        <input class="form-control search clearable" type="button" name="submit" value="搜索">
+          <i class="fa fa-search"></i> -->
+        </form>
+      </div>
+     </div>
+    </div>
+   </div>
+  </header>
+
+  <div class="container protocal-notice hidden-xs">
+   <div class="row">
+    <div class="col-xs-12">
+     <div class="pull-right">
+
+
+
+
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <main class="packages-list-container" id="all-packages" style="font-family: 'Microsoft JhengHei'">
+   <div class="container">
+    <div class="list-group packages" id="common-packages">
+     {% block content %}
+
+     {% endblock %}
+     <div>
+
+
+      <table>
+            <thead>
+                <tr>
+
+
+               </tr>
+            </thead>
+                 <tbody id="demoBody"></tbody>
+        </table>
+      <div id="demo"></div>
+  </div>
+    </div>
+    <div class="list-group packages" id="search-results" style="display: none"></div>
+   </div>
+  </main>
+
+  <footer id="footer" class="footer hidden-print" style="background: #795548;">
+   <div class="container">
+    <div class="row">
+     <div class="footer-about col-md-6 col-sm-12" id="about">
+      <h4>关于 Policy Search</h4>
+      <p>Policy Search <a  target="_blank" onclick="_hmt.push(['_trackEvent', 'footer', 'click', 'footer-bootcss.com'])"></a>是一款政策检索系统</p>
+      <p>提供了稳定、可靠、快速的免费政策搜索服务。</p>
+     </div>
+     <div class="footer-links col-md-4 col-sm-12">
+
+      <ul class="list-unstyled list-inline">
+       <!--<li><a href="http://www.ghostchina.com/" target="_blank" onclick="_hmt.push(['_trackEvent', 'footer', 'click', 'footer-ghostchina.com'])">Ghost中国</a></li>-->
+       <!--<li><a href="http://www.golaravel.com/" target="_blank" onclick="_hmt.push(['_trackEvent', 'footer', 'click', 'footer-golaravel.com'])">Laravel中文网</a></li>-->
+       <!--<li><a href="https://www.jquery123.com/" target="_blank" onclick="_hmt.push(['_trackEvent', 'footer', 'click', 'footer-jquery123.com'])">jQuery中文文档</a></li>-->
+       <!--<li><a href="https://www.webpackjs.com/" target="_blank" onclick="_hmt.push(['_trackEvent', 'footer', 'click', 'footer-webpackjs.com'])">Webpack中文网</a></li>-->
+       <!--<li><a href="https://www.npmjs.com.cn/" target="_blank" onclick="_hmt.push(['_trackEvent', 'footer', 'click', 'footer-www-npmjs.com.cn'])">NPM中文网</a></li>-->
+       <!--<li><a href="https://www.quanzhanketang.com/" target="_blank" onclick="_hmt.push(['_trackEvent', 'footer', 'click', 'footer-www-quanzhanketang.com'])">全栈课堂</a></li>-->
+       <!--<li><a href="http://www.91php.com/" target="_blank" onclick="_hmt.push(['_trackEvent', 'footer', 'click', 'footer-www-91php.com'])">91PHP</a></li>-->
+       <!--<li><a href="https://www.nodeapp.cn/" target="_blank" onclick="_hmt.push(['_trackEvent', 'footer', 'click', 'footer-www-nodeapp.cn'])">Node.js中文文档</a></li>-->
+      </ul>
+     </div>
+     <div class="footer-techs col-md-2 col-sm-12">
+      <h4>我们用到的技术：</h4>
+      <ul class="list-unstyled list-inline">
+       <li><a   target="_blank" onclick="_hmt.push(['_trackEvent', 'footer', 'click', 'footer-bootcss.com'])">python</a></li>
+       <li><a  target="_blank" onclick="_hmt.push(['_trackEvent', 'footer', 'click', 'footer-ghostchina.com'])">scrapy</a></li>
+       <li><a  target="_blank" onclick="_hmt.push(['_trackEvent', 'footer', 'click', 'footer-jquery123.com'])">whoosh</a></li>
+       <li><a  target="_blank" onclick="_hmt.push(['_trackEvent', 'footer', 'click', 'footer-babeljs.cn'])">jieba</a></li>
+       <li><a  target="_blank" onclick="_hmt.push(['_trackEvent', 'footer', 'click', 'footer-lodashjs.com'])">django</a></li>
+      </ul>
+     </div>
+    </div>
+   </div>
+  </footer>
+ </body>
+</html>
+<script src="/static/layui.js"></script>
+<link rel="stylesheet" href="/static/css/layui.css">
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+  <script>
+    var keyWord = document.getElementById("keyw").value;
+    var guest = "";
+    $(function () {
+        console.log("加载页面");
+        //获取keyWord
+        initPage();
+    });
+
+    function initPage(pageConf) {
+        if (!pageConf) {
+            pageConf = {};
+            pageConf.key = keyWord;
+            pageConf.pageSize = 10;
+            pageConf.currentPage = 1;
+        }
+       console.log("請求數據");
+       var url="";
+       $.post("http://127.0.0.1:8000/getData", pageConf, function (data) {
+            layui.use(['laypage', 'layer'], function () {
+                var page = layui.laypage;
+                page.render({
+                    elem: 'demo',
+                    count: data.count,
+                    curr: pageConf.currentPage,
+                    limit: pageConf.pageSize,
+                    first: "首页",
+                    last: "尾页",
+                    layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+                    jump: function (obj, first) {
+                        if (!first) {
+                            pageConf.currentPage = obj.curr;
+                            pageConf.pageSize = obj.limit;
+                            initPage(pageConf);
+                        }
+                    }
+                });
+                console.log("請求數據結果");
+                fillTable(data["data"], (pageConf.currentPage - 1) * pageConf.pageSize); //页面填充
+            })
+        });
+    }
+
+    //填充表格数据
+    function fillTable(data, num) {
+        $("#demoBody").html('');
+        $.each(data, function (index,obj) {
+            // id 很多时候并不是连续的，如果为了显示比较连续的记录数，可以这样根据当前页和每页条数动态的计算记录序号
+            index = index + num + 1;
+            var info = '';
+
+            info += '<tr class="table_style">';
+            info += '<td class="table_style">' + index + '</td>';
+            info += '<td class="table_style_TITLE">' + obj.POLICY_TITLE + '</td>';
+            info += '<td class="table_style">' + obj.POLICY_GRADE + '</td>';
+            info += '<td class="table_style">' + obj.PUB_TIME+'</td>';
+
+
+
+            info += '<td class="table_style">'+'<form action="http://127.0.0.1:8000/details" method="post" target="_blank" >';
+
+            info +='<input type="text" name="POLICY_TITLE" value="'+obj.POLICY_TITLE+'" hidden>';
+            info +='<input type="text" name="POLICY_GRADE" value="'+obj.POLICY_GRADE+'" hidden>';
+            info +='<input type="text" name="POLICY_ID" value="'+obj.POLICY_ID+'" hidden>';
+            info +='<input type="text" name="PUB_AGENCY_ID" value="'+obj.PUB_AGENCY_ID+'" hidden>';
+            info +='<input type="text" name="PUB_AGENCY" value="'+obj.PUB_AGENCY+'" hidden>';
+            info +='<input type="text" name="PUB_AGENCY_FULLNAME" value="'+obj.PUB_AGENCY_FULLNAME+'" hidden>';
+            info +='<input type="text" name="PUB_NUMBER" value="'+obj.PUB_NUMBER+'" hidden>';
+            info +='<input type="text" name="PUB_TIME" value="'+obj.PUB_TIME+'" hidden>';
+            info +='<input type="text" name="POLICY_TYPE" value="'+obj.POLICY_TYPE+'" hidden>';
+            info +='<input type="text" name="POLICY_BODY" value="'+obj.POLICY_BODY+'" hidden>';
+            info +='<input type="text" name="POLICY_SOURCE" value="'+obj.POLICY_SOURCE+'" hidden>';
+            info +='<input type="text" name="UPDATE_DATE" value="'+obj.UPDATE_DATE+'" hidden>';
+
+            info += '<span>'+'<input type="submit" value="详情">'+'</span>'+'</form>'+'</td>';
+            info += '</tr>';
+
+            console.log("表格填充");
+            $("#demoBody").append(info);
+
+        });
+    }
+</script>
+<script>
+
+</script>
+
+
+
