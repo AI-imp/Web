@@ -24,7 +24,7 @@ class DataSet(object):
         for index, user_id in enumerate(data_act, start=1):
              user_map[user_id] = index
         #定义物品列
-        data_available_item = io.loadmat(r'F:\python\learningproject\nlprecommend\Deep_Matrix_Factorization_Models-master-master\Deep_Matrix_Factorization_Models-master\Data\recommend_item.mat')  # 读取available_item_id
+        data_available_item = io.loadmat('./data\recommend_item.mat')  # 读取available_item_id
         data_available = data_available_item['recommend_item'].astype(int)[:, 0]
         item_map = {}  # 同上
         for index, item_id in enumerate(data_available, start=1):
@@ -35,7 +35,7 @@ class DataSet(object):
         # for index, i in enumerate(data['U_I'], start=1):
         #     user_to_item[index] = i[0][0].tolist()  # 字典键值可以是列表{1:[itemid,item_id]}
         pos_data = io.loadmat(
-            r'F:\python\learningproject\nlprecommend\Deep_Matrix_Factorization_Models-master-master\Deep_Matrix_Factorization_Models-master\Data\pos_data.mat')  # 读取active_id
+            './data/pos_data.mat')  # 读取active_id
         for index, i in enumerate(pos_data['pos_data'], start=1):
             user_to_item[index] = i[0][0].tolist()
         user_num = self.user_num
@@ -66,7 +66,7 @@ class DataSet(object):
         for index, user_id in enumerate(data_act, start=1):
             user_map[user_id] = index
         data_available_item = io.loadmat(
-            r'F:\python\learningproject\nlprecommend\Deep_Matrix_Factorization_Models-master-master\Deep_Matrix_Factorization_Models-master\Data\recommend_item.mat')  # 读取available_item_id
+            './data/recommend_item.mat')  # 读取available_item_id
         data_available = data_available_item['recommend_item'].astype(int)[:, 0]
         item_map = {}  # 同上
         for index, item_id in enumerate(data_available, start=1):
@@ -74,7 +74,7 @@ class DataSet(object):
         user_num = self.user_num
         neg_user_to_item = {}
         neg_data = io.loadmat(
-            r'F:\python\learningproject\nlprecommend\Deep_Matrix_Factorization_Models-master-master\Deep_Matrix_Factorization_Models-master\Data\neg_data.mat')  # 读取active_id
+           './data/neg_data.mat')  # 读取active_id
         for index, i in enumerate(neg_data['neg_data'], start=1):
             neg_user_to_item[index] = i[0][0].tolist()
         neg_data = []  # 重新分配data内存[(user,item,score,time)]
